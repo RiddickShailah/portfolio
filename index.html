@@ -7,12 +7,19 @@
   <title>Shailah Riddick | Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--pink" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
+
   <header class="site-header">
-    <a class="logo" href="#">SR</a>
+    <a class="logo" href="#">
+      <span class="logo-ring"></span>
+      SR
+    </a>
     <nav aria-label="Primary">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -23,32 +30,57 @@
 
   <main>
     <section class="hero">
-      <p class="eyebrow">Computer Science · Full-Stack · AI</p>
-      <h1>Shailah Riddick</h1>
-      <p class="lead">
-        I'm a Computer Science student at Georgia State University, where I transferred after
-        completing my B.S. in Business Information Technology at Virginia Tech. I build full-stack
-        web apps, ML-powered tools, and secure systems — from community platforms to regulatory
-        dashboards and graph-based AI assistants.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View projects</a>
-        <a class="btn btn-secondary" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn btn-secondary" href="mailto:Shailah125@gmail.com">Email me</a>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="blink">◆</span> Computer Science · Full-Stack · AI</p>
+        <h1 class="glitch" data-text="Shailah Riddick">Shailah Riddick</h1>
+        <p class="lead">
+          I'm a Computer Science student at Georgia State University. I spent my freshman year at
+          Virginia Tech before transferring to GSU, where I'm currently working toward my B.S. in
+          Computer Science. I build full-stack web apps, ML-powered tools, and secure systems —
+          from community platforms to regulatory dashboards and graph-based AI assistants.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-secondary" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn btn-secondary" href="mailto:Shailah125@gmail.com">Email me</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Profile photos">
+        <div class="photo-orbit">
+          <div class="photo-frame photo-frame--main">
+            <div class="photo-scanlines"></div>
+            <img src="assets/shailah-1.png" alt="Shailah Riddick" />
+            <span class="photo-tag">ONLINE</span>
+          </div>
+          <div class="photo-frame photo-frame--float-a">
+            <div class="photo-scanlines"></div>
+            <img src="assets/shailah-2.png" alt="Shailah Riddick" />
+          </div>
+          <div class="photo-frame photo-frame--float-b">
+            <div class="photo-scanlines"></div>
+            <img src="assets/shailah-3.png" alt="Shailah Riddick" />
+          </div>
+          <div class="orbit-ring orbit-ring--1"></div>
+          <div class="orbit-ring orbit-ring--2"></div>
+        </div>
       </div>
     </section>
 
     <section id="about" class="section about">
       <div class="section-head">
-        <h2>About</h2>
-        <p>Student engineer with production-style project experience and a security-first mindset.</p>
+        <p class="section-label">// about_me</p>
+        <h2>About Me</h2>
+        <p>
+          CS student, builder, and cyber nerd — shipping real projects while I finish my degree.
+        </p>
       </div>
       <div class="about-grid">
-        <article class="card">
+        <article class="card card--highlight">
           <h3>Education</h3>
           <ul>
             <li><strong>Georgia State University</strong> — B.S. Computer Science (in progress)</li>
-            <li><strong>Virginia Tech</strong> — B.S. Business Information Technology (May 2024)</li>
+            <li><strong>Virginia Tech</strong> — Freshman year, then transferred to GSU</li>
           </ul>
         </article>
         <article class="card">
@@ -71,16 +103,18 @@
 
     <section id="projects" class="section projects">
       <div class="section-head">
-        <h2>Selected Projects</h2>
-        <p>Full-stack apps, ML tools, and AI/graph systems from my Projects folder.</p>
+        <p class="section-label">// selected_work</p>
+        <h2>Projects</h2>
+        <p>Full-stack apps, ML tools, and AI/graph systems I've built.</p>
       </div>
       <div class="project-grid" id="project-grid"></div>
     </section>
 
     <section id="skills" class="section skills">
       <div class="section-head">
+        <p class="section-label">// tech_stack</p>
         <h2>Skills</h2>
-        <p>Languages, frameworks, and tools I use across coursework, internships, and side projects.</p>
+        <p>Languages, frameworks, and tools across coursework, internships, and side projects.</p>
       </div>
       <div class="skill-groups">
         <div class="skill-group">
@@ -104,6 +138,7 @@
 
     <section id="contact" class="section contact">
       <div class="section-head">
+        <p class="section-label">// connect</p>
         <h2>Contact</h2>
         <p>Open to software engineering internships and entry-level roles. Based in Virginia, open to remote.</p>
       </div>
@@ -116,7 +151,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Shailah Riddick</p>
+    <p>© <span id="year"></span> Shailah Riddick · built with 💗 & neon</p>
   </footer>
 
   <script src="projects.js"></script>

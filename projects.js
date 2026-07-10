@@ -8,7 +8,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/Helping_Hands/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/Helping_Hands",
-    accent: "#e85d4c",
+    accent: "#ff4fd8",
   },
   {
     title: "Medicaid Data Platform",
@@ -19,7 +19,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/Medicaid_Data_Platform/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/Medicaid_Data_Platform",
-    accent: "#0e7c7b",
+    accent: "#00f5ff",
   },
   {
     title: "ATL Swipe",
@@ -30,7 +30,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/ATL_Swipe/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/ATL_Swipe",
-    accent: "#ff9f5a",
+    accent: "#e040fb",
   },
   {
     title: "Panther Assist",
@@ -41,7 +41,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/GSU_-AI_Assistant/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/GSU_-AI_Assistant",
-    accent: "#0039a6",
+    accent: "#9d4edd",
   },
   {
     title: "GamingGraph Nexus",

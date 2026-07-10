@@ -22,6 +22,7 @@
     </a>
     <nav aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#hobbies">Hobbies</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -72,7 +73,7 @@
         <p class="section-label">// about_me</p>
         <h2>About Me</h2>
         <p>
-          CS student, builder, and cyber nerd — shipping real projects while I finish my degree.
+          CS student, builder, and cyber nerd based in Atlanta, GA — shipping real projects while I finish my degree.
         </p>
       </div>
       <div class="about-grid">
@@ -99,6 +100,15 @@
           </ul>
         </article>
       </div>
+    </section>
+
+    <section id="hobbies" class="section hobbies">
+      <div class="section-head">
+        <p class="section-label">// offline_mode</p>
+        <h2>Life Outside Code</h2>
+        <p>Tap a character for a cute sound + emote burst ✨</p>
+      </div>
+      <div class="hobby-grid" id="hobby-grid"></div>
     </section>
 
     <section id="projects" class="section projects">
@@ -140,21 +150,31 @@
       <div class="section-head">
         <p class="section-label">// connect</p>
         <h2>Contact</h2>
-        <p>Open to software engineering internships and entry-level roles. Based in Virginia, open to remote.</p>
+        <p>Open to software engineering internships and entry-level roles. Based in Atlanta, GA — open to remote.</p>
       </div>
       <div class="contact-links">
         <a href="mailto:Shailah125@gmail.com">Shailah125@gmail.com</a>
-        <a href="tel:+17578978336">757.897.8336</a>
         <a href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">github.com/RiddickShailah</a>
       </div>
     </section>
   </main>
+
+  <div class="emote-dock" id="emote-bar" aria-label="Cute sound emotes">
+    <button type="button" class="emote-chip" data-emote="heart">💕</button>
+    <button type="button" class="emote-chip" data-emote="sparkle">✨</button>
+    <button type="button" class="emote-chip" data-emote="chime">🎀</button>
+    <button type="button" class="emote-chip" data-emote="giggle">😊</button>
+    <button type="button" class="emote-chip" data-emote="star">⭐</button>
+    <button type="button" id="sound-toggle" class="sound-toggle" aria-pressed="true">🔊 sounds on</button>
+  </div>
 
   <footer class="site-footer">
     <p>© <span id="year"></span> Shailah Riddick · built with 💗 & neon</p>
   </footer>
 
   <script src="projects.js"></script>
+  <script src="hobbies.js"></script>
+  <script src="sounds.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

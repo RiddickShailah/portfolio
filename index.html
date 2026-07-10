@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shailah Riddick — Computer Science student and full-stack software engineer. Projects in Next.js, TypeScript, Python, and AI." />
+  <title>Shailah Riddick | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#">SR</a>
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Computer Science · Full-Stack · AI</p>
+      <h1>Shailah Riddick</h1>
+      <p class="lead">
+        I'm a Computer Science student at Georgia State University, where I transferred after
+        completing my B.S. in Business Information Technology at Virginia Tech. I build full-stack
+        web apps, ML-powered tools, and secure systems — from community platforms to regulatory
+        dashboards and graph-based AI assistants.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn btn-secondary" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn btn-secondary" href="mailto:Shailah125@gmail.com">Email me</a>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Student engineer with production-style project experience and a security-first mindset.</p>
+      </div>
+      <div class="about-grid">
+        <article class="card">
+          <h3>Education</h3>
+          <ul>
+            <li><strong>Georgia State University</strong> — B.S. Computer Science (in progress)</li>
+            <li><strong>Virginia Tech</strong> — B.S. Business Information Technology (May 2024)</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Experience</h3>
+          <ul>
+            <li><strong>Gen AI Engineer Intern</strong> — ARANGO (Remote)</li>
+            <li><strong>Cyber Security Engineer</strong> — U.S. Air Force Reserve</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Certifications</h3>
+          <ul>
+            <li>Oracle Cloud Infrastructure AI Foundations Associate</li>
+            <li>CompTIA Security+ (SY0-601)</li>
+            <li>Top Secret Security Clearance (Active)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Full-stack apps, ML tools, and AI/graph systems from my Projects folder.</p>
+      </div>
+      <div class="project-grid" id="project-grid"></div>
+    </section>
+
+    <section id="skills" class="section skills">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>Languages, frameworks, and tools I use across coursework, internships, and side projects.</p>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <p>TypeScript, JavaScript, React, Next.js, HTML, CSS, Tailwind, Framer Motion, Leaflet</p>
+        </div>
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <p>Node.js, Express, Python, Flask, Prisma, SQL, MySQL, REST APIs, JWT, RBAC</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI & Data</h3>
+          <p>LangChain, GraphRAG, scikit-learn, NLP, LLMs, Recharts, unit testing</p>
+        </div>
+        <div class="skill-group">
+          <h3>DevOps & Cloud</h3>
+          <p>Git, GitHub, Docker, Kubernetes, AWS, Azure, GCP, Linux, Bash</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Open to software engineering internships and entry-level roles. Based in Virginia, open to remote.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:Shailah125@gmail.com">Shailah125@gmail.com</a>
+        <a href="tel:+17578978336">757.897.8336</a>
+        <a href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">github.com/RiddickShailah</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Shailah Riddick</p>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

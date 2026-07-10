@@ -6,7 +6,7 @@ const HOBBIES = [
     emote: "✨🐶💕",
     sound: "sparkle",
     image: "assets/hobbies/hobby-milo.png",
-    caption: "Morning walks with my boy Milo — tiny white fluffball extraordinaire.",
+    caption: "BeltLine walks with my boy Milo — GSU student, Atlanta girl.",
     animation: "bounce",
   },
   {
@@ -16,7 +16,7 @@ const HOBBIES = [
     emote: "💗🕹️✨",
     sound: "pop",
     image: "assets/hobbies/hobby-roblox.png",
-    caption: "Building worlds and vibing with friends online.",
+    caption: "Building Roblox worlds from my Atlanta apartment near GSU.",
     animation: "pulse",
   },
   {
@@ -26,7 +26,7 @@ const HOBBIES = [
     emote: "🔥💪✨",
     sound: "power",
     image: "assets/hobbies/hobby-workout.png",
-    caption: "Gym sessions to stay strong and energized.",
+    caption: "GSU gym days — staying strong and energized.",
     animation: "shake",
   },
   {
@@ -36,7 +36,7 @@ const HOBBIES = [
     emote: "💄✨🎀",
     sound: "chime",
     image: "assets/hobbies/hobby-makeup.png",
-    caption: "Glam nights and soft everyday looks.",
+    caption: "Soft glam and everyday looks — Atlanta edition.",
     animation: "sparkle",
   },
   {
@@ -46,7 +46,7 @@ const HOBBIES = [
     emote: "🛍️💕✨",
     sound: "giggle",
     image: "assets/hobbies/hobby-shopping.png",
-    caption: "Mall days and cute fits with my girls.",
+    caption: "Ponce City Market runs with my girls in Atlanta.",
     animation: "sway",
   },
   {
@@ -56,7 +56,7 @@ const HOBBIES = [
     emote: "🍵💚✨",
     sound: "sip",
     image: "assets/hobbies/hobby-matcha.png",
-    caption: "Iced matcha runs are my love language.",
+    caption: "Iced matcha runs around Atlanta — my love language.",
     animation: "float",
   },
   {
@@ -66,7 +66,7 @@ const HOBBIES = [
     emote: "✈️🌸💫",
     sound: "whoosh",
     image: "assets/hobbies/hobby-travel.png",
-    caption: "New cities, new views, new memories.",
+    caption: "Flying out of ATL — new cities, new memories.",
     animation: "drift",
   },
 ];

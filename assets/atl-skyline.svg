@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="skyGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff8fab" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#00f5ff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#d4b8ff" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#skyGlow)" d="M0 220V120 L40 118 55 95 70 118 95 115 110 70 125 115 150 112 165 88 180 112 210 110 225 60 240 110 270 108 290 85 305 108 340 106 360 55 375 106 410 104 430 78 445 104 480 102 500 45 515 102 560 100 580 72 595 100 640 98 660 40 675 98 720 96 745 68 760 96 800 94 820 35 835 94 880 92 900 65 915 92 960 90 985 50 1000 90 1040 88 1060 62 1075 88 1110 86 1135 58 1150 86 1185 84 1200 82V220Z"/>
+  <g fill="#ffffff" opacity="0.55">
+    <rect x="112" y="74" width="4" height="6" rx="1"/>
+    <rect x="224" y="64" width="4" height="8" rx="1"/>
+    <rect x="358" y="59" width="4" height="10" rx="1"/>
+    <rect x="498" y="49" width="5" height="12" rx="1"/>
+    <rect x="662" y="44" width="5" height="14" rx="1"/>
+    <rect x="818" y="39" width="5" height="16" rx="1"/>
+    <rect x="982" y="52" width="4" height="10" rx="1"/>
+  </g>
+</svg>

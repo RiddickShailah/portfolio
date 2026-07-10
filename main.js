@@ -67,4 +67,3 @@ HOBBIES.forEach((hobby) => {
 });
 
 initSoundEmotes();
-initJazzMusic();

@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-scene" aria-hidden="true"></div>
+  <div class="bg-rain" aria-hidden="true"></div>
   <div class="bg-cyber-grid" aria-hidden="true"></div>
   <div class="bg-glow bg-glow--pink" aria-hidden="true"></div>
   <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
   <div class="bg-scanlines" aria-hidden="true"></div>
-  <div class="bg-sparkles" aria-hidden="true">✨ 🌸 💕 ✿ ⭐ 🎀 ✨</div>
-  <div class="atl-skyline" aria-hidden="true">
-    <img src="assets/atl-skyline.svg" alt="" />
-  </div>
+  <div class="neon-sign neon-sign--left" aria-hidden="true">ATL</div>
+  <div class="neon-sign neon-sign--right" aria-hidden="true">soft girl.exe</div>
 
   <header class="site-header">
     <a class="logo" href="#">SR</a>
@@ -34,7 +34,7 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="cyber-dot">◆</span> Atlanta, GA · soft girl · cyber soul</p>
+        <p class="eyebrow"><span class="cyber-dot">◆</span> Atlanta · lofi cyber · cozy code</p>
         <h1 class="hero-title">Shailah Riddick</h1>
         <p class="lead">
           I'm a Computer Science student at Georgia State University. I spent my freshman year at
@@ -50,30 +50,33 @@
       </div>
 
       <div class="hero-visual" aria-label="Profile photos">
-        <div class="photo-cluster">
-          <div class="photo-frame photo-frame--main">
-            <img src="assets/shailah-1.png" alt="Shailah at Hacklanta" />
-            <span class="photo-sticker">ATL 💕</span>
+        <div class="window-frame">
+          <p class="window-label">neo-atl.view</p>
+          <div class="photo-cluster">
+            <div class="photo-frame photo-frame--main">
+              <img src="assets/shailah-1.png" alt="Shailah at Hacklanta" />
+              <span class="photo-sticker">ATL 💕</span>
+            </div>
+            <div class="photo-frame photo-frame--float-a">
+              <img src="assets/shailah-2.png" alt="Shailah in Army uniform" />
+            </div>
+            <div class="photo-frame photo-frame--float-b">
+              <img src="assets/shailah-3.png" alt="Shailah with her dog Milo" />
+            </div>
+            <span class="float-deco float-deco--1">🌿</span>
+            <span class="float-deco float-deco--2">✨</span>
+            <span class="float-deco float-deco--3">🎮</span>
           </div>
-          <div class="photo-frame photo-frame--float-a">
-            <img src="assets/shailah-2.png" alt="Shailah in Army uniform" />
-          </div>
-          <div class="photo-frame photo-frame--float-b">
-            <img src="assets/shailah-3.png" alt="Shailah with her dog Milo" />
-          </div>
-          <span class="float-deco float-deco--1">🌸</span>
-          <span class="float-deco float-deco--2">✨</span>
-          <span class="float-deco float-deco--3">🍑</span>
         </div>
       </div>
     </section>
 
     <section id="about" class="section about">
       <div class="section-head">
-        <p class="section-label">about me ✿</p>
+        <p class="section-label">// about_me</p>
         <h2>About Me</h2>
         <p>
-          CS student, builder, and tech girly based in Atlanta, GA — shipping real projects while I finish my degree.
+          CS student, builder, and tech girly based in Atlanta — shipping real projects while I finish my degree.
         </p>
       </div>
       <div class="about-grid">
@@ -104,16 +107,16 @@
 
     <section id="hobbies" class="section hobbies">
       <div class="section-head">
-        <p class="section-label">life outside code 🎀</p>
+        <p class="section-label">// offline_mode</p>
         <h2>My Happy Place</h2>
-        <p>Tap a little character for a cute sound + emote burst ✨</p>
+        <p>Tap a character for a cute sound + emote burst ✨</p>
       </div>
       <div class="hobby-grid" id="hobby-grid"></div>
     </section>
 
     <section id="projects" class="section projects">
       <div class="section-head">
-        <p class="section-label">selected work 💻</p>
+        <p class="section-label">// selected_work</p>
         <h2>Projects</h2>
         <p>Full-stack apps, ML tools, and AI/graph systems I've built.</p>
       </div>
@@ -122,7 +125,7 @@
 
     <section id="skills" class="section skills">
       <div class="section-head">
-        <p class="section-label">tech stack ⭐</p>
+        <p class="section-label">// tech_stack</p>
         <h2>Skills</h2>
         <p>Languages, frameworks, and tools across coursework, internships, and side projects.</p>
       </div>
@@ -148,7 +151,7 @@
 
     <section id="contact" class="section contact">
       <div class="section-head">
-        <p class="section-label">let's connect 💌</p>
+        <p class="section-label">// connect</p>
         <h2>Contact</h2>
         <p>Open to software engineering internships and entry-level roles. Based in Atlanta, GA — open to remote.</p>
       </div>
@@ -165,18 +168,16 @@
     <button type="button" class="emote-chip" data-emote="chime">🎀</button>
     <button type="button" class="emote-chip" data-emote="giggle">😊</button>
     <button type="button" class="emote-chip" data-emote="star">⭐</button>
-    <button type="button" id="jazz-toggle" class="jazz-toggle" aria-pressed="false">🎷 jazz off</button>
     <button type="button" id="sound-toggle" class="sound-toggle" aria-pressed="true">🔊 sounds on</button>
   </div>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Shailah Riddick · soft girl era in the ATL skyline · <span class="footer-credit">jazz vibes 🎷</span></p>
+    <p>© <span id="year"></span> Shailah Riddick · cozy cyber atl · made with 💗 & neon</p>
   </footer>
 
   <script src="projects.js"></script>
   <script src="hobbies.js"></script>
   <script src="sounds.js"></script>
-  <script src="music.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

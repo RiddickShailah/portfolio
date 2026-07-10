@@ -56,12 +56,6 @@ HOBBIES.forEach((hobby) => {
 
   card.addEventListener("click", (event) => {
     playEmote(hobby.sound, event);
-    hobby.emote.split("").forEach((char, index) => {
-      if (char.trim()) return;
-      setTimeout(() => {
-        spawnEmote(char, event.clientX + index * 12, event.clientY - index * 8);
-      }, index * 60);
-    });
     hobby.emote.split(/\s+/).forEach((emoji, index) => {
       setTimeout(() => {
         spawnEmote(emoji, event.clientX + index * 18, event.clientY - 20 - index * 10);

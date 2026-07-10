@@ -16,7 +16,7 @@ const HOBBIES = [
     emote: "💗🕹️✨",
     sound: "pop",
     image: "assets/hobbies/hobby-roblox.png",
-    caption: "Building Roblox worlds in my cozy Atlanta fit.",
+    caption: "Pink setup, Roblox nights — girly gamer era.",
     animation: "pulse",
   },
   {
@@ -26,7 +26,7 @@ const HOBBIES = [
     emote: "🔥💪✨",
     sound: "power",
     image: "assets/hobbies/hobby-workout.png",
-    caption: "GSU gym days in my matching set — staying strong.",
+    caption: "Pilates at the GSU gym — soft girl athletic era.",
     animation: "shake",
   },
   {
@@ -46,7 +46,7 @@ const HOBBIES = [
     emote: "🛍️💕✨",
     sound: "giggle",
     image: "assets/hobbies/hobby-shopping.png",
-    caption: "Ponce City Market hauls in my GSU streetwear fit.",
+    caption: "Lenox Mall hauls in my cutest girly fit.",
     animation: "sway",
   },
   {

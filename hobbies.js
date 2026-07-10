@@ -16,7 +16,7 @@ const HOBBIES = [
     emote: "💗🕹️✨",
     sound: "pop",
     image: "assets/hobbies/hobby-roblox.png",
-    caption: "Building Roblox worlds from my Atlanta apartment near GSU.",
+    caption: "Building Roblox worlds in my cozy Atlanta fit.",
     animation: "pulse",
   },
   {
@@ -26,7 +26,7 @@ const HOBBIES = [
     emote: "🔥💪✨",
     sound: "power",
     image: "assets/hobbies/hobby-workout.png",
-    caption: "GSU gym days — staying strong and energized.",
+    caption: "GSU gym days in my matching set — staying strong.",
     animation: "shake",
   },
   {
@@ -36,7 +36,7 @@ const HOBBIES = [
     emote: "💄✨🎀",
     sound: "chime",
     image: "assets/hobbies/hobby-makeup.png",
-    caption: "Soft glam and everyday looks — Atlanta edition.",
+    caption: "Clean girl glam — wide-leg jeans and soft beats.",
     animation: "sparkle",
   },
   {
@@ -46,7 +46,7 @@ const HOBBIES = [
     emote: "🛍️💕✨",
     sound: "giggle",
     image: "assets/hobbies/hobby-shopping.png",
-    caption: "Ponce City Market runs with my girls in Atlanta.",
+    caption: "Ponce City Market hauls in my GSU streetwear fit.",
     animation: "sway",
   },
   {

@@ -8,7 +8,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/Helping_Hands/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/Helping_Hands",
-    accent: "#ff4fd8",
+    accent: "#ff8fab",
   },
   {
     title: "Medicaid Data Platform",
@@ -19,7 +19,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/Medicaid_Data_Platform/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/Medicaid_Data_Platform",
-    accent: "#00f5ff",
+    accent: "#a8d8ff",
   },
   {
     title: "ATL Swipe",
@@ -30,7 +30,7 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/ATL_Swipe/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/ATL_Swipe",
-    accent: "#e040fb",
+    accent: "#ffb088",
   },
   {
     title: "Panther Assist",
@@ -41,16 +41,16 @@ const PROJECTS = [
     image:
       "https://github.com/RiddickShailah/GSU_-AI_Assistant/raw/main/docs/linkedin/01-cover.png",
     github: "https://github.com/RiddickShailah/GSU_-AI_Assistant",
-    accent: "#9d4edd",
+    accent: "#d4b8ff",
   },
   {
     title: "GamingGraph Nexus",
     subtitle: "LangChain + ArangoDB PoC",
     description:
-      "Multi-model knowledge graph assistant for gaming intelligence — natural-language graph queries, fraud detection patterns, and a cyberpunk Streamlit HUD.",
+      "Multi-model knowledge graph assistant for gaming intelligence — natural-language graph queries, fraud detection patterns, and a Streamlit dashboard.",
     stack: ["Python", "LangChain", "ArangoDB", "Streamlit", "Plotly", "Docker"],
     image: null,
     github: "https://github.com/RiddickShailah/LangChain-ArangoDB-GamingGraph-PoC",
-    accent: "#00f5ff",
+    accent: "#8fd4a8",
   },
 ];

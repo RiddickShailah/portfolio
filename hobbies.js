@@ -6,7 +6,7 @@ const HOBBIES = [
     emote: "✨🐶💕",
     sound: "sparkle",
     image: "assets/hobbies/hobby-milo.png",
-    caption: "Morning walks with my tiny white fluffball, Milo.",
+    caption: "Morning walks with my boy Milo — tiny white fluffball extraordinaire.",
     animation: "bounce",
   },
   {

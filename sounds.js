@@ -65,7 +65,7 @@ function initSoundEmotes() {
   toggle?.addEventListener("click", () => {
     soundEnabled = !soundEnabled;
     toggle.setAttribute("aria-pressed", String(soundEnabled));
-    toggle.textContent = soundEnabled ? "🔊 sounds on" : "🔇 sounds off";
+    toggle.textContent = soundEnabled ? "sounds on" : "sounds off";
     if (soundEnabled) playEmote("heart");
   });
 

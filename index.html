@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shailah Riddick — Computer Science student and full-stack software engineer in Atlanta, GA." />
-  <title>Shailah Riddick | Software Engineer</title>
+  <meta name="description" content="Shailah Riddick — Interactive portfolio. CS student & full-stack engineer in Atlanta." />
+  <title>Shailah Riddick | Interactive Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-scene" aria-hidden="true"></div>
+  <canvas id="scene-canvas" aria-hidden="true"></canvas>
+
+  <div class="bg-layer bg-layer--night" data-parallax="0.15"></div>
+  <div class="bg-layer bg-layer--sunset" data-parallax="0.25"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
   <div class="bg-rain" aria-hidden="true"></div>
-  <div class="bg-cyber-grid" aria-hidden="true"></div>
-  <div class="bg-glow bg-glow--pink" aria-hidden="true"></div>
-  <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
-  <div class="bg-scanlines" aria-hidden="true"></div>
-  <div class="neon-sign neon-sign--left" aria-hidden="true">ATL</div>
-  <div class="neon-sign neon-sign--right" aria-hidden="true">soft girl.exe</div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="logo" href="#">SR</a>
+    <a class="logo" href="#" data-tilt>SR</a>
     <nav aria-label="Primary">
       <a href="#about">About</a>
       <a href="#hobbies">Hobbies</a>
@@ -32,69 +31,69 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="cyber-dot">◆</span> Atlanta · lofi cyber · cozy code</p>
-        <h1 class="hero-title">Shailah Riddick</h1>
-        <p class="lead">
-          I'm a Computer Science student at Georgia State University. I spent my freshman year at
-          Virginia Tech before transferring to GSU, where I'm currently working toward my B.S. in
-          Computer Science. I build full-stack web apps, ML-powered tools, and secure systems —
-          from community platforms to regulatory dashboards and graph-based AI assistants.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-secondary" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn btn-secondary" href="mailto:Shailah125@gmail.com">Email me</a>
+    <section class="hero panel" id="hero">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">interaction design · atlanta · lofi nights</p>
+          <h1>Shailah Riddick</h1>
+          <p class="lead">
+            Computer Science student at Georgia State University — transferred from Virginia Tech.
+            I design and build full-stack apps, ML tools, and secure systems from my cozy Atlanta corner.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects" data-tilt>Explore work</a>
+            <a class="btn btn-ghost" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer" data-tilt>GitHub</a>
+          </div>
+          <p class="hint">↕ scroll · move mouse · tap cards</p>
         </div>
-      </div>
 
-      <div class="hero-visual" aria-label="Profile photos">
-        <div class="window-frame">
-          <p class="window-label">neo-atl.view</p>
-          <div class="photo-cluster">
-            <div class="photo-frame photo-frame--main">
-              <img src="assets/shailah-1.png" alt="Shailah at Hacklanta" />
-              <span class="photo-sticker">ATL 💕</span>
+        <div class="hero-stage reveal" aria-label="Live profile gallery">
+          <div class="live-window" data-tilt>
+            <div class="live-window__bar">
+              <span></span><span></span><span></span>
+              <p>live_portraits.exe</p>
             </div>
-            <div class="photo-frame photo-frame--float-a">
-              <img src="assets/shailah-2.png" alt="Shailah in Army uniform" />
+            <div class="live-gallery">
+              <figure class="live-card live-card--main">
+                <img src="assets/shailah-1.png" alt="Shailah at Hacklanta" class="live-img" />
+                <figcaption>Hacklanta</figcaption>
+              </figure>
+              <figure class="live-card live-card--a">
+                <img src="assets/shailah-2.png" alt="Shailah in Army uniform" class="live-img" />
+                <figcaption>Service</figcaption>
+              </figure>
+              <figure class="live-card live-card--b">
+                <img src="assets/shailah-3.png" alt="Shailah with Milo" class="live-img" />
+                <figcaption>Milo 🐾</figcaption>
+              </figure>
             </div>
-            <div class="photo-frame photo-frame--float-b">
-              <img src="assets/shailah-3.png" alt="Shailah with her dog Milo" />
-            </div>
-            <span class="float-deco float-deco--1">🌿</span>
-            <span class="float-deco float-deco--2">✨</span>
-            <span class="float-deco float-deco--3">🎮</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section about">
+    <section id="about" class="section panel reveal">
       <div class="section-head">
-        <p class="section-label">// about_me</p>
+        <p class="section-label">01 — about</p>
         <h2>About Me</h2>
-        <p>
-          CS student, builder, and tech girly based in Atlanta — shipping real projects while I finish my degree.
-        </p>
+        <p>CS student, builder, and interaction lover based in Atlanta.</p>
       </div>
       <div class="about-grid">
-        <article class="card card--highlight">
+        <article class="glass-card" data-tilt>
           <h3>Education</h3>
           <ul>
             <li><strong>Georgia State University</strong> — B.S. Computer Science (in progress)</li>
             <li><strong>Virginia Tech</strong> — Freshman year, then transferred to GSU</li>
           </ul>
         </article>
-        <article class="card">
+        <article class="glass-card" data-tilt>
           <h3>Experience</h3>
           <ul>
             <li><strong>Gen AI Engineer Intern</strong> — ARANGO (Remote)</li>
             <li><strong>Cyber Security Engineer</strong> — U.S. Air Force Reserve</li>
           </ul>
         </article>
-        <article class="card">
+        <article class="glass-card" data-tilt>
           <h3>Certifications</h3>
           <ul>
             <li>Oracle Cloud Infrastructure AI Foundations Associate</li>
@@ -105,79 +104,63 @@
       </div>
     </section>
 
-    <section id="hobbies" class="section hobbies">
+    <section id="hobbies" class="section panel reveal">
       <div class="section-head">
-        <p class="section-label">// offline_mode</p>
-        <h2>My Happy Place</h2>
-        <p>Tap a character for a cute sound + emote burst ✨</p>
+        <p class="section-label">02 — life mode</p>
+        <h2>Interactive Hobbies</h2>
+        <p>Hover, tilt, and tap — each card plays a sound + emote burst.</p>
       </div>
       <div class="hobby-grid" id="hobby-grid"></div>
     </section>
 
-    <section id="projects" class="section projects">
+    <section id="projects" class="section panel reveal">
       <div class="section-head">
-        <p class="section-label">// selected_work</p>
+        <p class="section-label">03 — selected work</p>
         <h2>Projects</h2>
-        <p>Full-stack apps, ML tools, and AI/graph systems I've built.</p>
+        <p>Drag your cursor — cards respond in 3D.</p>
       </div>
       <div class="project-grid" id="project-grid"></div>
     </section>
 
-    <section id="skills" class="section skills">
+    <section id="skills" class="section panel reveal">
       <div class="section-head">
-        <p class="section-label">// tech_stack</p>
+        <p class="section-label">04 — stack</p>
         <h2>Skills</h2>
-        <p>Languages, frameworks, and tools across coursework, internships, and side projects.</p>
       </div>
-      <div class="skill-groups">
-        <div class="skill-group">
-          <h3>Frontend</h3>
-          <p>TypeScript, JavaScript, React, Next.js, HTML, CSS, Tailwind, Framer Motion, Leaflet</p>
-        </div>
-        <div class="skill-group">
-          <h3>Backend</h3>
-          <p>Node.js, Express, Python, Flask, Prisma, SQL, MySQL, REST APIs, JWT, RBAC</p>
-        </div>
-        <div class="skill-group">
-          <h3>AI & Data</h3>
-          <p>LangChain, GraphRAG, scikit-learn, NLP, LLMs, Recharts, unit testing</p>
-        </div>
-        <div class="skill-group">
-          <h3>DevOps & Cloud</h3>
-          <p>Git, GitHub, Docker, Kubernetes, AWS, Azure, GCP, Linux, Bash</p>
-        </div>
-      </div>
+      <div class="skill-orbit" id="skill-orbit"></div>
     </section>
 
-    <section id="contact" class="section contact">
+    <section id="contact" class="section panel reveal">
       <div class="section-head">
-        <p class="section-label">// connect</p>
+        <p class="section-label">05 — connect</p>
         <h2>Contact</h2>
-        <p>Open to software engineering internships and entry-level roles. Based in Atlanta, GA — open to remote.</p>
+        <p>Based in Atlanta, GA — open to remote internships and entry-level roles.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:Shailah125@gmail.com">Shailah125@gmail.com</a>
-        <a href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer">github.com/RiddickShailah</a>
+        <a class="glass-pill" href="mailto:Shailah125@gmail.com" data-tilt>Shailah125@gmail.com</a>
+        <a class="glass-pill" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer" data-tilt>github.com/RiddickShailah</a>
       </div>
     </section>
   </main>
 
-  <div class="emote-dock" id="emote-bar" aria-label="Cute sound emotes">
+  <div class="emote-dock" id="emote-bar" aria-label="Sound emotes">
     <button type="button" class="emote-chip" data-emote="heart">💕</button>
     <button type="button" class="emote-chip" data-emote="sparkle">✨</button>
     <button type="button" class="emote-chip" data-emote="chime">🎀</button>
     <button type="button" class="emote-chip" data-emote="giggle">😊</button>
     <button type="button" class="emote-chip" data-emote="star">⭐</button>
-    <button type="button" id="sound-toggle" class="sound-toggle" aria-pressed="true">🔊 sounds on</button>
+    <button type="button" id="sound-toggle" class="sound-toggle" aria-pressed="true">sounds on</button>
   </div>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Shailah Riddick · cozy cyber atl · made with 💗 & neon</p>
+    <p>© <span id="year"></span> Shailah Riddick · lofi atl nights</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <script src="projects.js"></script>
   <script src="hobbies.js"></script>
   <script src="sounds.js"></script>
+  <script src="interactions.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

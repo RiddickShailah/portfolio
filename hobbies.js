@@ -6,7 +6,7 @@ const HOBBIES = [
     emote: "✨🐶💕",
     sound: "sparkle",
     image: "assets/hobbies/hobby-milo.png",
-    caption: "BeltLine walks with my boy Milo — GSU student, Atlanta girl.",
+    caption: "BeltLine walks with my boy Milo — Atlanta college girl era.",
     animation: "bounce",
   },
   {
@@ -66,7 +66,7 @@ const HOBBIES = [
     emote: "✈️🌸💫",
     sound: "whoosh",
     image: "assets/hobbies/hobby-travel.png",
-    caption: "Flying out of ATL — new cities, new memories.",
+    caption: "Flying out of ATL — 21 and always on the go.",
     animation: "drift",
   },
 ];

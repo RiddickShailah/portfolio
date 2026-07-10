@@ -16,7 +16,7 @@ const HOBBIES = [
     emote: "💗🕹️✨",
     sound: "pop",
     image: "assets/hobbies/hobby-roblox.png",
-    caption: "Pink setup, Roblox nights — girly gamer era.",
+    caption: "My Roblox avatar — pink fit, main character energy.",
     animation: "pulse",
   },
   {

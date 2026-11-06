@@ -1,166 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shailah Riddick — Interactive portfolio. CS student & full-stack engineer in Atlanta." />
-  <title>Shailah Riddick | Interactive Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>Shailah Riddick</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Shailah Riddick: GenAI, distributed systems and security engineer. CS at Georgia State University, Atlanta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Monoton&family=JetBrains+Mono:wght@400;500&family=Overpass:wght@700;800&display=swap">
+<style>
+/* Layout: "Midnight on the Downtown Connector". A 3D Atlanta skyline you can look around with the mouse, with Shai's name on a
+   rooftop billboard. Sections are exits marked by interstate-green highway signs; projects are lit billboards with marquee bulbs.
+   Glam layer: gold-to-pink metallic type and a glitter canvas over everything. */
+:root{
+  --night:#0d0818; --night-2:#170f2a; --glass:rgba(28,18,48,.66); --glass-strong:rgba(32,20,54,.86);
+  --edge:rgba(255,214,160,.18); --text:#f7eeff; --muted:#c4b3de; --dim:#9583b6;
+  --gold:#ffd27a; --gold-deep:#e9a94a; --champagne:#fff1d6; --pink:#ff6fae; --rose:#ffa3c7; --lavender:#b9a2ff; --cyan:#72e4ff;
+  --sign:#0b6b3a; --sign-edge:#e8f3ec;
+  --metal:linear-gradient(100deg,#fff1d6 0%,#ffd27a 22%,#e9a94a 38%,#ffd9ec 55%,#ff6fae 72%,#ffd27a 100%);
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --neon:"Monoton","Playfair Display",Georgia,serif;
+  --hwy:"Overpass","DM Sans",Arial,sans-serif;
+  --radius:20px; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+
+/* Sky + glitter */
+.sky{position:fixed;inset:0;z-index:-3;background:
+  radial-gradient(ellipse 70% 45% at 70% 0%,rgba(255,111,174,.22),transparent 70%),
+  radial-gradient(ellipse 60% 40% at 15% 10%,rgba(185,162,255,.18),transparent 70%),
+  linear-gradient(180deg,#120a24 0%,#1c1034 45%,#0d0818 100%)}
+#glitter{position:fixed;inset:0;z-index:30;pointer-events:none;width:100%;height:100%}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(13,8,24,.74);border-bottom:1px solid var(--edge)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:rgba(13,8,24,.96)}
+.top-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.logo{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:999px;background:var(--metal);background-size:200% 100%;animation:shine 6s linear infinite;color:#2a1230;font-family:var(--serif);font-weight:900;font-size:15px;box-shadow:0 0 26px rgba(255,111,174,.45),inset 0 0 0 2px rgba(255,255,255,.35)}
+.top nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 20px;font-size:14px;font-weight:500;color:var(--muted)}
+.top nav a:hover{color:var(--gold);text-shadow:0 0 14px rgba(255,210,122,.6)}
+@keyframes shine{to{background-position:-200% 0}}
+
+/* 3D city hero */
+.city{position:relative;height:clamp(560px,78vh,760px);perspective:1100px;perspective-origin:50% 40%;overflow:hidden;border-bottom:1px solid var(--edge)}
+.world{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out}
+.layer{position:absolute;left:-12%;right:-12%;bottom:0;transform-style:preserve-3d}
+.layer svg{display:block;width:100%;height:auto}
+.l-far{transform:translateZ(-420px) scale(1.4);bottom:120px;opacity:.55}
+.l-mid{transform:translateZ(-200px) scale(1.18);bottom:40px}
+.l-near{transform:translateZ(0)}
+.haze{position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg,transparent,rgba(13,8,24,.9));pointer-events:none}
+.road{position:absolute;left:-10%;right:-10%;bottom:-2px;height:70px;background:
+  repeating-linear-gradient(90deg,transparent 0 40px,rgba(255,210,122,.55) 40px 70px,transparent 70px 110px) 0 32px/100% 3px no-repeat,
+  linear-gradient(180deg,#1a1030,#0b0716);transform:translateZ(60px) rotateX(55deg);transform-origin:bottom}
+.cars{position:absolute;left:0;right:0;bottom:16px;height:6px;transform:translateZ(80px)}
+.cars i{position:absolute;width:26px;height:4px;border-radius:4px;background:#ff3d5a;box-shadow:0 0 12px #ff3d5a;animation:drive 7s linear infinite}
+.cars i.w{background:#fff6dc;box-shadow:0 0 14px #fff6dc;animation-direction:reverse;bottom:10px}
+@keyframes drive{from{left:-5%}to{left:105%}}
+
+.boards{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,44px);padding-top:18px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));transform-style:preserve-3d;transform:translateZ(120px)}
+.bb{position:relative;transform-style:preserve-3d}
+.bb .face{position:relative;border-radius:10px;background:linear-gradient(160deg,#241640,#120a24);border:3px solid #3a2560;box-shadow:0 0 0 6px #120a24,0 30px 60px rgba(0,0,0,.6),0 0 60px rgba(255,111,174,.25)}
+.bb .face::before{content:"";position:absolute;inset:-9px;border-radius:14px;pointer-events:none;background:radial-gradient(circle,var(--gold) 0 2.2px,transparent 2.8px) 0 0/16px 16px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:5px;animation:bulbs 1.2s steps(2) infinite;filter:drop-shadow(0 0 4px var(--gold))}
+@keyframes bulbs{50%{opacity:.55}}
+.bb .legs{position:relative;height:clamp(40px,7vh,90px);display:flex;justify-content:space-around;margin:0 22%}
+.bb .legs i{width:10px;background:linear-gradient(90deg,#2b1c45,#4b3473,#2b1c45)}
+.bb .catwalk{position:absolute;left:6%;right:6%;bottom:-12px;height:6px;background:#3a2560;border-radius:2px}
+.main .face{padding:clamp(18px,2.4vw,30px) clamp(20px,3vw,40px);max-width:620px}
+.main .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);text-shadow:0 0 10px rgba(114,228,255,.7)}
+h1{margin:6px 0 0;font-family:var(--serif);font-weight:900;font-size:clamp(42px,6.2vw,82px);line-height:1;letter-spacing:-.01em;background:var(--metal);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite;filter:drop-shadow(0 0 22px rgba(255,111,174,.35))}
+.main .neon{margin:12px 0 0;font-family:var(--neon);font-size:clamp(15px,1.8vw,22px);color:#ffe3f0;text-shadow:0 0 6px #ff6fae,0 0 18px #ff6fae,0 0 36px #ff2f8f;letter-spacing:.04em;animation:flick 5s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.4}95%{opacity:1}96%{opacity:.6}}
+.photo .face{width:clamp(200px,22vw,290px);padding:10px}
+.photo .screen{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#000}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.photo img.on{opacity:1}
+.photo .cap{position:absolute;left:8px;bottom:8px;font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(13,8,24,.8);color:var(--gold)}
+.photo .tag{display:block;text-align:center;margin-top:8px;font-family:var(--neon);font-size:13px;color:#dff8ff;text-shadow:0 0 6px var(--cyan),0 0 16px var(--cyan)}
+.mini{position:absolute;transform-style:preserve-3d}
+.mini .face{padding:8px 14px;font-family:var(--hwy);font-weight:800;font-size:13px;letter-spacing:.04em;white-space:nowrap}
+.m1{left:6%;top:12%;transform:translateZ(-160px) rotateY(18deg)}
+.m1 .face{color:var(--gold);text-shadow:0 0 10px rgba(255,210,122,.7)}
+.m2{right:5%;top:9%;transform:translateZ(-220px) rotateY(-16deg)}
+.m2 .face{color:var(--cyan);text-shadow:0 0 10px rgba(114,228,255,.7)}
+.hint{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:14px;font-family:var(--mono);font-size:11.5px;color:var(--dim);transform:translateZ(130px)}
+
+main,.foot{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Intro panel under the city */
+.intro{position:relative;margin-top:-70px;z-index:3;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:center;padding:28px 32px}
+.lead{margin:0;color:var(--muted);font-size:17.5px;max-width:40rem}
+.lead strong{color:var(--text);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.chips li{font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,210,122,.08);border:1px solid rgba(255,210,122,.3);color:var(--gold)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;border:1px solid transparent;transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--metal);background-size:200% 100%;animation:shine 6s linear infinite;color:#2a1230;box-shadow:0 0 30px rgba(255,111,174,.35)}
+.btn-ghost{background:var(--glass);border-color:rgba(185,162,255,.4);color:var(--text)}
+
+/* Glass card base, with real depth */
+.card{background:var(--glass);border:1px solid var(--edge);border-radius:var(--radius);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 40px rgba(6,3,14,.55),0 0 0 1px rgba(0,0,0,.2);transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .2s ease}
+.card:hover{box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 30px 60px rgba(6,3,14,.7),0 0 40px rgba(255,111,174,.18)}
+.pop{transform:translateZ(36px)}
+.pop-sm{transform:translateZ(20px)}
+
+/* Highway sign section labels */
+section{padding-block:84px 8px;scroll-margin-top:72px}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.sign{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;margin-bottom:14px;transform:perspective(600px) rotateX(8deg)}
+.sign .exit{font-family:var(--hwy);font-weight:800;font-size:11px;letter-spacing:.08em;background:var(--sign);color:#fff;border:2px solid var(--sign-edge);border-bottom:0;border-radius:6px 6px 0 0;padding:2px 10px;margin-left:10px}
+.sign .plate{display:flex;align-items:center;gap:10px;background:var(--sign);color:#fff;border:2px solid var(--sign-edge);border-radius:8px;padding:6px 14px;font-family:var(--hwy);font-weight:800;font-size:14px;letter-spacing:.03em;box-shadow:0 0 0 3px var(--sign),0 10px 24px rgba(0,0,0,.45)}
+.shield{display:inline-grid;place-items:center;width:30px;height:30px;font-size:11px;color:#fff;background:#1d4fa8;border:2px solid #fff;border-radius:6px 6px 14px 14px;position:relative}
+.shield::before{content:"";position:absolute;top:-2px;left:-2px;right:-2px;height:8px;background:#c8102e;border:2px solid #fff;border-bottom:0;border-radius:6px 6px 0 0}
+.shield b{position:relative;top:3px}
+h2{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.4vw,50px);line-height:1.05;margin:0;text-wrap:balance;background:var(--metal);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:10px 0 0;color:var(--muted);max-width:42rem}
+h3{font-family:var(--sans);font-weight:700;margin:0;line-height:1.25;text-wrap:balance}
+
+.about{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.about .card{padding:26px}
+.about h3{font-family:var(--serif);font-size:23px;font-weight:700;color:var(--gold);margin-bottom:12px}
+.about ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:15px}
+.about strong{color:var(--text);font-weight:500;display:block}
+
+/* Featured: big billboards */
+.featured{display:grid;gap:56px}
+.fb .face{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:30px;padding:32px;border-radius:14px}
+.fb .legs{height:46px;margin:0 30%}
+.term{font-family:var(--mono);font-size:12.5px;color:var(--cyan);text-shadow:0 0 8px rgba(114,228,255,.5)}
+.fb h3{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:900;margin-top:6px;color:var(--champagne)}
+.why{color:var(--muted);margin:10px 0 0;max-width:62ch}
+.pts{margin:16px 0 0;padding-left:20px;display:grid;gap:8px;max-width:68ch}
+.pts li::marker{color:var(--pink)}
+.stats{display:grid;gap:12px;align-content:start}
+.stat{padding:16px 18px;border-radius:14px;background:linear-gradient(160deg,rgba(255,210,122,.12),rgba(255,111,174,.08));border:1px solid rgba(255,210,122,.3)}
+.stat b{display:block;font-family:var(--serif);font-weight:900;font-size:32px;line-height:1.1;font-variant-numeric:lining-nums tabular-nums;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13.5px;color:var(--muted)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.stack li{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(185,162,255,.14);color:var(--lavender)}
+
+/* Projects grid as billboards */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:999px;border:1px solid rgba(185,162,255,.35);background:var(--glass);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--metal);color:#2a1230;border-color:transparent;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 22px}
+.proj{min-width:0}
+.proj .face{display:flex;flex-direction:column;overflow:visible;border-radius:12px;height:100%}
+.proj{display:flex;flex-direction:column}
+.proj .face{flex:1}
+.media{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:8px 8px 0 0;background:linear-gradient(135deg,var(--acc),#170f2a 85%)}
+.media img{width:100%;height:100%;object-fit:cover}
+.media .ph{position:absolute;inset:0;display:grid;place-items:center;padding:18px;text-align:center;font-family:var(--neon);font-size:clamp(16px,1.6vw,21px);color:#fff;text-shadow:0 0 8px var(--acc),0 0 22px var(--acc)}
+.media .t{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(13,8,24,.82);color:var(--gold)}
+.pbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kind{font-size:12.5px;color:var(--acc);font-weight:700;letter-spacing:.02em}
+.pbody h3{font-size:19px;color:var(--champagne)}
+.pbody p{margin:0;color:var(--muted);font-size:14.5px}
+.plink{margin-top:auto;padding-top:8px;font-size:14px;font-weight:700;color:var(--gold)}
+.plink:hover{text-decoration:underline;text-underline-offset:3px}
+.proj .legs{height:28px;margin:0 32%}
+.none{color:var(--dim);font-size:14px}
+
+/* Experience */
+.jobs{display:grid;gap:20px}
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;padding:26px 28px}
+.when{font-family:var(--mono);font-size:13px;color:var(--cyan)}
+.job h3{font-size:21px;color:var(--champagne)}
+.org{color:var(--rose);margin:2px 0 0;font-weight:500}
+.job ul{margin:12px 0 0;padding-left:20px;display:grid;gap:7px;color:var(--muted)}
+.job ul li::marker{color:var(--pink)}
+.num{color:var(--gold);font-weight:700}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.skills .card{padding:22px 24px}
+.skills h3{font-size:13px;font-family:var(--hwy);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tags li{font-size:14px;padding:5px 12px;border-radius:999px;background:rgba(247,238,255,.06);border:1px solid rgba(247,238,255,.12);transition:transform .2s ease,box-shadow .2s ease}
+.tags li:hover{transform:translateY(-3px) translateZ(10px);box-shadow:0 8px 18px rgba(255,111,174,.25);border-color:rgba(255,210,122,.4)}
+
+/* Contact */
+.contact .face{padding:40px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;border-radius:14px}
+.links{display:grid;gap:10px}
+.pill{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;background:rgba(247,238,255,.05);border:1px solid var(--edge);font-weight:500;min-width:0}
+.pill span{color:var(--dim);font-size:13px;font-family:var(--mono)}
+.pill:hover{border-color:rgba(255,210,122,.5)}
+.mail{font-family:var(--mono);font-size:14px;user-select:all;overflow-wrap:anywhere;color:var(--text)!important}
+.copy{font:inherit;font-size:13px;font-weight:700;border:0;border-radius:999px;padding:7px 14px;background:var(--metal);color:#2a1230;cursor:pointer;flex:none}
+
+.foot{padding-block:64px 72px;color:var(--dim);font-size:14px;text-align:center}
+.foot b{font-family:var(--neon);font-weight:400;color:#ffe3f0;text-shadow:0 0 8px var(--pink)}
+
+@media (max-width:900px){
+  .main .face{max-width:none}
+  .photo{display:none}
+  .intro{grid-template-columns:minmax(0,1fr);margin-top:-40px}
+  .actions{justify-content:flex-start}
+  .about,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fb .face,.job,.contact .face{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .city{height:440px}
+  .boards{transform:none;padding-top:40px}
+  .main .face{padding:18px}
+  .m1,.m2{display:none}
+  .about,.grid,.skills,.stats{grid-template-columns:minmax(0,1fr)}
+  .top nav{display:none}
+  .fb .face,.contact .face,.intro,.job{padding:22px}
+  section{padding-block:64px 4px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-  <canvas id="scene-canvas" aria-hidden="true"></canvas>
 
-  <div class="bg-layer bg-layer--night" data-parallax="0.15"></div>
-  <div class="bg-layer bg-layer--sunset" data-parallax="0.25"></div>
-  <div class="bg-vignette" aria-hidden="true"></div>
-  <div class="bg-rain" aria-hidden="true"></div>
-  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true"></div>
+<canvas id="glitter" aria-hidden="true"></canvas>
 
-  <header class="site-header">
-    <a class="logo" href="#" data-tilt>SR</a>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#top" aria-label="Back to top">SR</a>
     <nav aria-label="Primary">
       <a href="#about">About</a>
-      <a href="#hobbies">Hobbies</a>
+      <a href="#featured">Featured</a>
       <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero panel" id="hero">
-      <div class="hero-inner">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">interaction design · atlanta · lofi nights</p>
+<div class="city" id="top">
+  <div class="world" id="world">
+    <div class="layer l-far" id="far" aria-hidden="true"></div>
+    <div class="layer l-mid" id="mid" aria-hidden="true"></div>
+    <div class="layer l-near" id="near" aria-hidden="true"></div>
+    <div class="haze" aria-hidden="true"></div>
+    <div class="road" aria-hidden="true"></div>
+    <div class="cars" aria-hidden="true"><i></i><i style="animation-delay:-3s"></i><i class="w" style="animation-delay:-1s"></i><i class="w" style="animation-delay:-4.5s"></i></div>
+
+    <div class="mini m1" aria-hidden="true"><div class="bb"><div class="face">LIVE FROM THE ATL</div></div></div>
+    <div class="mini m2" aria-hidden="true"><div class="bb"><div class="face">TS/SCI · SECURITY+</div></div></div>
+
+    <div class="boards">
+      <div class="bb main">
+        <div class="face">
+          <span class="kicker">now building · downtown atlanta</span>
           <h1>Shailah Riddick</h1>
-          <p class="lead">
-            Computer Science student at Georgia State University — transferred from Virginia Tech.
-            I design and build full-stack apps, ML tools, and secure systems from my cozy Atlanta corner.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects" data-tilt>Explore work</a>
-            <a class="btn btn-ghost" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer" data-tilt>GitHub</a>
-          </div>
-          <p class="hint">↕ scroll · move mouse · tap cards</p>
+          <p class="neon">GenAI · Data · Security</p>
         </div>
-
-        <div class="hero-stage reveal" aria-label="Live profile gallery">
-          <div class="live-window" data-tilt>
-            <div class="live-window__bar">
-              <span></span><span></span><span></span>
-              <p>live_portraits.exe</p>
-            </div>
-            <div class="live-gallery">
-              <figure class="live-card live-card--main">
-                <img src="assets/shailah-1.png" alt="Shailah at Hacklanta" class="live-img" />
-                <figcaption>Hacklanta</figcaption>
-              </figure>
-              <figure class="live-card live-card--a">
-                <img src="assets/shailah-2.png" alt="Shailah in Army uniform" class="live-img" />
-                <figcaption>Service</figcaption>
-              </figure>
-              <figure class="live-card live-card--b">
-                <img src="assets/shailah-3.png" alt="Shailah with Milo" class="live-img" />
-                <figcaption>Milo 🐾</figcaption>
-              </figure>
-            </div>
+        <div class="legs" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="bb photo" aria-label="Photos of Shailah">
+        <div class="face">
+          <div class="screen" id="screen">
+            <img class="on" src="assets/shailah-1.jpg" alt="Shailah at the Hacklanta hackathon" data-cap="Hacklanta">
+            <img src="assets/shailah-2.jpg" alt="Shailah in uniform" data-cap="Service">
+            <img src="assets/shailah-3.jpg" alt="Shailah with her dog Milo" data-cap="Milo 🐾">
+            <span class="cap" id="cap">Hacklanta</span>
           </div>
+          <span class="tag">live_portraits</span>
         </div>
+        <div class="legs" aria-hidden="true"><i></i><i></i></div>
       </div>
-    </section>
+    </div>
+    <p class="hint">move your mouse to look around the city</p>
+  </div>
+</div>
 
-    <section id="about" class="section panel reveal">
-      <div class="section-head">
-        <p class="section-label">01 — about</p>
-        <h2>About Me</h2>
-        <p>CS student, builder, and interaction lover based in Atlanta.</p>
-      </div>
-      <div class="about-grid">
-        <article class="glass-card" data-tilt>
-          <h3>Education</h3>
-          <ul>
-            <li><strong>Georgia State University</strong> — B.S. Computer Science (in progress)</li>
-            <li><strong>Virginia Tech</strong> — Freshman year, then transferred to GSU</li>
-          </ul>
-        </article>
-        <article class="glass-card" data-tilt>
-          <h3>Experience</h3>
-          <ul>
-            <li><strong>Gen AI Engineer Intern</strong> — ARANGO (Remote)</li>
-            <li><strong>Cyber Security Engineer</strong> — U.S. Air Force Reserve</li>
-          </ul>
-        </article>
-        <article class="glass-card" data-tilt>
-          <h3>Certifications</h3>
-          <ul>
-            <li>Oracle Cloud Infrastructure AI Foundations Associate</li>
-            <li>CompTIA Security+ (SY0-601)</li>
-            <li>Top Secret Security Clearance (Active)</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="hobbies" class="section panel reveal">
-      <div class="section-head">
-        <p class="section-label">02 — life mode</p>
-        <h2>Interactive Hobbies</h2>
-        <p>Hover, tilt, and tap — each card plays a sound + emote burst.</p>
-      </div>
-      <div class="hobby-grid" id="hobby-grid"></div>
-    </section>
-
-    <section id="projects" class="section panel reveal">
-      <div class="section-head">
-        <p class="section-label">03 — selected work</p>
-        <h2>Projects</h2>
-        <p>Drag your cursor — cards respond in 3D.</p>
-      </div>
-      <div class="project-grid" id="project-grid"></div>
-    </section>
-
-    <section id="skills" class="section panel reveal">
-      <div class="section-head">
-        <p class="section-label">04 — stack</p>
-        <h2>Skills</h2>
-      </div>
-      <div class="skill-orbit" id="skill-orbit"></div>
-    </section>
-
-    <section id="contact" class="section panel reveal">
-      <div class="section-head">
-        <p class="section-label">05 — connect</p>
-        <h2>Contact</h2>
-        <p>Based in Atlanta, GA — open to remote internships and entry-level roles.</p>
-      </div>
-      <div class="contact-links">
-        <a class="glass-pill" href="mailto:Shailah125@gmail.com" data-tilt>Shailah125@gmail.com</a>
-        <a class="glass-pill" href="https://github.com/RiddickShailah" target="_blank" rel="noopener noreferrer" data-tilt>github.com/RiddickShailah</a>
-      </div>
-    </section>
-  </main>
-
-  <div class="emote-dock" id="emote-bar" aria-label="Sound emotes">
-    <button type="button" class="emote-chip" data-emote="heart">💕</button>
-    <button type="button" class="emote-chip" data-emote="sparkle">✨</button>
-    <button type="button" class="emote-chip" data-emote="chime">🎀</button>
-    <button type="button" class="emote-chip" data-emote="giggle">😊</button>
-    <button type="button" class="emote-chip" data-emote="star">⭐</button>
-    <button type="button" id="sound-toggle" class="sound-toggle" aria-pressed="true">sounds on</button>
+<main>
+  <div class="card intro">
+    <div>
+      <p class="lead">I build <strong>GenAI retrieval systems</strong>, <strong>distributed data pipelines</strong> and <strong>secure full-stack apps</strong>. Computer Science at Georgia State University, Gen AI Engineer Intern at Arango, and IT Technician in the U.S. Air Force Reserve.</p>
+      <ul class="chips"><li>TS/SCI clearance</li><li>CompTIA Security+</li><li>Oracle AI Foundations</li><li>5 hackathons</li></ul>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="#featured">Explore work</a>
+      <a class="btn btn-ghost" href="https://github.com/RiddickShailah" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/shailah-riddick-1b002428b" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
   </div>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Shailah Riddick · lofi atl nights</p>
-  </footer>
+  <section id="about">
+    <div class="head"><div>
+      <div class="sign"><span class="exit">EXIT 01</span><span class="plate"><span class="shield"><b>85</b></span>About · Next right</span></div>
+      <h2>About Me</h2><p class="sub">CS student and builder based in Atlanta, open to internships and entry-level roles in AI, data and security engineering.</p></div></div>
+    <div class="about">
+      <article class="card" data-tilt>
+        <h3 class="pop">Education</h3>
+        <ul class="pop-sm">
+          <li><strong>Georgia State University</strong>B.S. Computer Science, expected Dec 2027</li>
+          <li><strong>Virginia Tech</strong>Freshman year, then transferred to GSU</li>
+          <li><strong>Coursework</strong>Big Data Programming, Data Structures, Software Development, System-Level Programming</li>
+        </ul>
+      </article>
+      <article class="card" data-tilt>
+        <h3 class="pop">Experience</h3>
+        <ul class="pop-sm">
+          <li><strong>Gen AI Engineer Intern</strong>Arango · May – Aug 2026</li>
+          <li><strong>IT Technician (Client Systems)</strong>U.S. Air Force Reserve · Jul 2024 – Present</li>
+        </ul>
+      </article>
+      <article class="card" data-tilt>
+        <h3 class="pop">Credentials</h3>
+        <ul class="pop-sm">
+          <li><strong>Top Secret / SCI clearance</strong>Active</li>
+          <li><strong>CompTIA Security+</strong></li>
+          <li><strong>Oracle AI Foundations Associate</strong></li>
+          <li><strong>Women's Air and Space Foundation</strong>Inaugural Scholarship Recipient, 2026</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="projects.js"></script>
-  <script src="hobbies.js"></script>
-  <script src="sounds.js"></script>
-  <script src="interactions.js"></script>
-  <script src="main.js"></script>
+  <section id="featured">
+    <div class="head"><div>
+      <div class="sign"><span class="exit">EXIT 02</span><span class="plate"><span class="shield"><b>75</b></span>Featured builds · 1 mile</span></div>
+      <h2>Now Showing</h2><p class="sub">Three projects that show how I work: production GenAI, systems from bare metal, and ML with the trade-offs measured.</p></div></div>
+    <div class="featured">
+      <div class="bb fb">
+        <article class="face card" data-tilt data-deep="4">
+          <div class="pop-sm">
+            <span class="term">Summer 2026 · Arango</span>
+            <h3>GenAI Document to Knowledge-Graph Pipeline</h3>
+            <p class="why">A multi-service GenAI pipeline that turns documents into a knowledge graph for retrieval. I took a failing deployment and traced problems across service boundaries until it ran end to end.</p>
+            <ul class="pts">
+              <li>Diagnosed 12 distinct issues across config, auth, connectivity and data layers (HTTP 400/401/404/422, malformed payloads, execution-order bugs) on gRPC and REST services running on Kubernetes.</li>
+              <li>Replaced an unreliable notebook client with a raw REST workflow using JWT bearer tokens, and traced a failed corpus build to an undocumented File Manager dependency.</li>
+              <li>Mapped the ~19,000-line service (Go gRPC-Gateway, Python gRPC, ArangoDB) across 11 RPC endpoints and wrote a remediation runbook.</li>
+            </ul>
+            <ul class="stack"><li>Python</li><li>gRPC</li><li>REST</li><li>ArangoDB</li><li>Kubernetes</li><li>OpenAI API</li></ul>
+          </div>
+          <div class="stats pop">
+            <div class="stat"><b>7 of 8</b><span>pipeline stages restored</span></div>
+            <div class="stat"><b>12</b><span>production issues diagnosed</span></div>
+            <div class="stat"><b>100+</b><span>documents processed</span></div>
+          </div>
+        </article>
+        <div class="legs" aria-hidden="true"><i></i><i></i></div>
+      </div>
+
+      <div class="bb fb">
+        <article class="face card" data-tilt data-deep="4">
+          <div class="pop-sm">
+            <span class="term">Fall 2026 · Big Data Programming</span>
+            <h3>Distributed Computing Cluster: Spark, Ray &amp; PostgreSQL</h3>
+            <p class="why">Two empty virtual machines turned into a working Spark and Ray cluster, then used to measure how much speedup parallelism really delivers.</p>
+            <ul class="pts">
+              <li>Built a two-node cluster from bare Ubuntu Server VMs with private networking, static IPs and SSH, and fixed a shared-NAT-address conflict by pinning both frameworks to the private network.</li>
+              <li>Explained a best speedup of only 1.21× with Amdahl's law: Spark's ~0.08 s per-job overhead outweighed the compute, versus a few milliseconds in Ray.</li>
+              <li>Built ETL pipelines into PostgreSQL through JDBC and psycopg2, and computed one grouped aggregation 5 ways (RDD, DataFrame, Spark SQL, pandas-on-Spark, Ray Data) with identical results.</li>
+            </ul>
+            <ul class="stack"><li>PySpark</li><li>Ray</li><li>PostgreSQL 18</li><li>Ubuntu Server</li><li>Linux networking</li></ul>
+          </div>
+          <div class="stats pop">
+            <div class="stat"><b>2</b><span>nodes built from bare VMs</span></div>
+            <div class="stat"><b>1.21×</b><span>speedup, explained</span></div>
+            <div class="stat"><b>5</b><span>APIs, identical results</span></div>
+          </div>
+        </article>
+        <div class="legs" aria-hidden="true"><i></i><i></i></div>
+      </div>
+
+      <div class="bb fb">
+        <article class="face card" data-tilt data-deep="4">
+          <div class="pop-sm">
+            <span class="term">Summer 2026</span>
+            <h3>EmotionTune: DistilBERT + LoRA Fine-Tuning</h3>
+            <p class="why">How much of a pretrained transformer do you need to update for a new task? A head-to-head of full fine-tuning against LoRA adapters.</p>
+            <ul class="pts">
+              <li>Fine-tuned DistilBERT for 7-class emotion classification, comparing full fine-tuning and LoRA under the same data, epoch budget and evaluation protocol.</li>
+              <li>Applied LoRA adapters to the attention projections (q_lin, v_lin) while keeping competitive test performance.</li>
+              <li>Handled severe class imbalance (Neutral ~45–51%, Disgust ~2–3%) with weighted F1 and confusion matrices instead of accuracy alone.</li>
+            </ul>
+            <ul class="stack"><li>PyTorch</li><li>Hugging Face</li><li>PEFT / LoRA</li><li>scikit-learn</li></ul>
+          </div>
+          <div class="stats pop">
+            <div class="stat"><b>~240K</b><span>training samples</span></div>
+            <div class="stat"><b>~98–99%</b><span>fewer trainable parameters</span></div>
+            <div class="stat"><b>7</b><span>emotion classes</span></div>
+          </div>
+        </article>
+        <div class="legs" aria-hidden="true"><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="head">
+      <div>
+        <div class="sign"><span class="exit">EXIT 03</span><span class="plate"><span class="shield"><b>20</b></span>More projects · All lanes</span></div>
+        <h2>On the Billboards</h2><p class="sub">Filter by area. Each board tilts with your cursor.</p></div>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="none" id="none" hidden>No projects in this area yet.</p>
+  </section>
+
+  <section id="experience">
+    <div class="head"><div>
+      <div class="sign"><span class="exit">EXIT 04</span><span class="plate"><span class="shield"><b>285</b></span>Experience · Perimeter</span></div>
+      <h2>Where I've Worked</h2></div></div>
+    <div class="jobs">
+      <article class="card job" data-tilt data-deep="3">
+        <div class="pop-sm"><span class="when">Jul 2024 – Present</span></div>
+        <div class="pop-sm">
+          <h3>IT Technician (Client Systems, 5-Level)</h3>
+          <p class="org">U.S. Air Force Reserve</p>
+          <ul>
+            <li>Remediated <span class="num">400+</span> vulnerabilities across <span class="num">10,000+</span> systems via ACAS scans during incident response, cutting risk exposure <span class="num">95%</span>.</li>
+            <li>Hardened Windows endpoints to DISA STIGs, verified with SCAP, and triaged Defender, Trellix, Splunk and Sentinel alerts.</li>
+            <li>Imaged Windows 10/11 devices, managed Active Directory accounts and GPOs, and automated admin tasks with PowerShell.</li>
+            <li>Resolved CAC, VPN and access tickets in ServiceNow/Remedy within SLA and trained junior Airmen toward qualification.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card job" data-tilt data-deep="3">
+        <div class="pop-sm"><span class="when">May – Aug 2026</span></div>
+        <div class="pop-sm">
+          <h3>Gen AI Engineer Intern</h3>
+          <p class="org">Arango</p>
+          <ul>
+            <li>Delivered a GraphRAG proof of concept for NVIDIA and LangChain that unifies graph traversal, vector search and LLM retrieval in ArangoDB.</li>
+            <li>Debugged a <span class="num">9</span>-scenario end-to-end QA test suite on <span class="num">1,000+</span> documents, reporting gaps that shaped the production pipeline.</li>
+            <li>Turned a Jupyter notebook into a production-ready GraphRAG pipeline using LangChain, adding health checks and streaming support.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="head"><div>
+      <div class="sign"><span class="exit">EXIT 05</span><span class="plate"><span class="shield"><b>400</b></span>Skills · Buckhead</span></div>
+      <h2>The Stack</h2></div></div>
+    <div class="skills">
+      <div class="card" data-tilt><h3 class="pop-sm">Languages</h3><ul class="tags pop-sm"><li>Python</li><li>Java</li><li>TypeScript</li><li>JavaScript</li><li>C</li><li>C++</li><li>SQL</li><li>Bash</li><li>PowerShell</li><li>HTML/CSS</li></ul></div>
+      <div class="card" data-tilt><h3 class="pop-sm">AI &amp; ML</h3><ul class="tags pop-sm"><li>LLMs</li><li>RAG / GraphRAG</li><li>Agentic workflows</li><li>LoRA fine-tuning</li><li>PyTorch</li><li>Hugging Face</li><li>scikit-learn</li><li>LangChain</li><li>OpenCV</li></ul></div>
+      <div class="card" data-tilt><h3 class="pop-sm">Data &amp; Infrastructure</h3><ul class="tags pop-sm"><li>Apache Spark</li><li>Ray</li><li>PostgreSQL</li><li>ArangoDB</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>Linux</li><li>AWS</li><li>Azure</li></ul></div>
+      <div class="card" data-tilt><h3 class="pop-sm">Web &amp; Security</h3><ul class="tags pop-sm"><li>React</li><li>Next.js</li><li>Node.js</li><li>Express</li><li>Flask</li><li>Prisma</li><li>DISA STIGs/SCAP</li><li>ACAS</li><li>Splunk</li><li>Sentinel</li><li>RMF</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="bb contact">
+      <div class="face card" data-tilt data-deep="3">
+        <div class="pop-sm">
+          <div class="sign"><span class="exit">EXIT 06</span><span class="plate"><span class="shield"><b>85</b></span>Contact · Last exit</span></div>
+          <h2>Let's build something.</h2>
+          <p class="sub">Based in Atlanta, GA. Open to remote internships and entry-level roles in GenAI, data and security engineering.</p>
+        </div>
+        <div class="links pop">
+          <div class="pill"><span class="mail" id="mail">Shailah125@gmail.com</span><button class="copy" id="copy" type="button">Copy email</button></div>
+          <a class="pill" href="https://github.com/RiddickShailah" target="_blank" rel="noopener">github.com/RiddickShailah <span>↗</span></a>
+          <a class="pill" href="https://www.linkedin.com/in/shailah-riddick-1b002428b" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        </div>
+      </div>
+      <div class="legs" aria-hidden="true"><i></i><i></i></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">© 2026 Shailah Riddick · made in the <b>ATL</b></footer>
+
+<script>
+/* ---------- Atlanta skyline (procedural, with landmark silhouettes) ---------- */
+function rng(seed){return()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646;};}
+function skyline(seed,h,fill,winA,landmarks){
+  const r=rng(seed),W=1600;let x=0,out="",win="";
+  const lm=landmarks?{360:"boa",620:"westin",900:"oac",1180:"suntrust"}:{};
+  while(x<W){
+    const key=Object.keys(lm).find(k=>x<=+k&&x+70>+k);
+    if(key){
+      const t=lm[key];delete lm[key];const bx=+key;
+      if(t==="boa"){ // Bank of America Plaza: tall tower, stepped pyramid, gold spire
+        out+=`<rect x="${bx}" y="${h-380}" width="64" height="380"/><path d="M${bx} ${h-380} L${bx+32} ${h-440} L${bx+64} ${h-380}Z"/><rect x="${bx+30}" y="${h-500}" width="4" height="62" fill="#ffd27a"/>`;
+        win+=`<path d="M${bx+6} ${h-382} L${bx+32} ${h-432} L${bx+58} ${h-382}" fill="none" stroke="#ffd27a" stroke-width="2" opacity=".85"/>`;
+        x=bx+70;
+      }else if(t==="westin"){ // Westin Peachtree Plaza: glass cylinder with crown
+        out+=`<rect x="${bx}" y="${h-330}" width="58" height="330" rx="26"/><rect x="${bx+4}" y="${h-346}" width="50" height="18" rx="6"/>`;
+        win+=`<rect x="${bx+4}" y="${h-342}" width="50" height="6" fill="#72e4ff" opacity=".8"/>`;
+        x=bx+66;
+      }else if(t==="oac"){ // One Atlantic Center: gothic pyramid crown
+        out+=`<rect x="${bx}" y="${h-300}" width="60" height="300"/><path d="M${bx} ${h-300} L${bx+30} ${h-360} L${bx+60} ${h-300}Z"/>`;
+        win+=`<path d="M${bx+30} ${h-360} L${bx+30} ${h-300}" stroke="#ff6fae" stroke-width="2" opacity=".7"/>`;
+        x=bx+68;
+      }else{ // stepped tower
+        out+=`<rect x="${bx}" y="${h-270}" width="70" height="270"/><rect x="${bx+12}" y="${h-300}" width="46" height="34"/><rect x="${bx+26}" y="${h-320}" width="18" height="24"/>`;
+        x=bx+78;
+      }
+      continue;
+    }
+    const w=30+Math.floor(r()*60),bh=landmarks?60+r()*210:40+r()*160;
+    out+=`<rect x="${x}" y="${(h-bh).toFixed(0)}" width="${w}" height="${bh.toFixed(0)}"/>`;
+    for(let wy=h-bh+10;wy<h-8;wy+=14)for(let wx=x+5;wx<x+w-6;wx+=10)if(r()<winA)win+=`<rect x="${wx}" y="${wy.toFixed(0)}" width="4" height="6" fill="${r()<.8?"#ffd27a":"#ff9fca"}" opacity="${(.45+r()*.5).toFixed(2)}"/>`;
+    x+=w+2+Math.floor(r()*6);
+  }
+  return `<svg viewBox="0 0 ${W} ${h}" preserveAspectRatio="xMidYMax slice"><g fill="${fill}">${out}</g>${win}</svg>`;
+}
+document.getElementById("far").innerHTML=skyline(7,320,"#3d2866",.08,false);
+document.getElementById("mid").innerHTML=skyline(42,520,"#2c1b50",.16,true);
+document.getElementById("near").innerHTML=skyline(99,260,"#170d2c",.22,false);
+
+/* ---------- Photo billboard cycles ---------- */
+const imgs=[...document.querySelectorAll("#screen img")],cap=document.getElementById("cap");let pi=0;
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches, fine=matchMedia("(pointer: fine)").matches;
+if(!still)setInterval(()=>{imgs[pi].classList.remove("on");pi=(pi+1)%imgs.length;imgs[pi].classList.add("on");cap.textContent=imgs[pi].dataset.cap;},3200);
+
+/* ---------- Look around the city ---------- */
+const world=document.getElementById("world"),city=document.querySelector(".city");
+if(!still){
+  city.addEventListener("pointermove",e=>{const r=city.getBoundingClientRect();
+    const nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+    world.style.transform=`rotateY(${nx*10}deg) rotateX(${-ny*6}deg)`;});
+  city.addEventListener("pointerleave",()=>world.style.transform="");
+  addEventListener("scroll",()=>{const y=Math.min(scrollY,700);world.style.setProperty("transform",`translateY(${y*.15}px) rotateX(${y*.01}deg)`);},{passive:true});
+}
+
+/* ---------- Projects ---------- */
+const AREAS=[["all","All"],["ai","GenAI & ML"],["data","Data"],["web","Full-Stack"],["sys","Systems"],["sec","Security"]];
+const PROJECTS=[
+ {t:"RISE Rock, Paper, Scissors",kind:"Hand-tracked webcam game",term:"Fall 2026",areas:["ai","sys"],acc:"#ffb088",
+  d:"Added 10 glove overlays that follow MediaPipe's 21 hand landmarks, an ON FIRE win-streak system and a move reveal, then shipped them as a pull request.",
+  stack:["Python","OpenCV","MediaPipe"],link:"https://github.com/linnerle/RISEGame/pull/2",lt:"View pull request"},
+ {t:"Unix Systems Programming",kind:"C & Bash on Linux",term:"Fall 2026",areas:["sys"],acc:"#72e4ff",
+  d:"Built a popen-based disk-usage analyzer, a buffered file reader and a full CLI file-copy tool verified across 17 recorded test runs.",
+  stack:["C","Bash","POSIX","GCC"]},
+ {t:"Pizza Ordering System",kind:"SOLID interface design",term:"Fall 2026",areas:["sys"],acc:"#ff6fae",
+  d:"Rescued a broken ordering system with segregated interfaces, then added payments and discounts through dependency injection with no if or switch logic.",
+  stack:["Java","SOLID","Strategy pattern"]},
+ {t:"GamingGraph Nexus",kind:"LangChain + ArangoDB",term:"Summer 2026",areas:["ai","data","sec"],acc:"#8fd4a8",
+  d:"A fraud-detection knowledge graph queried in plain English, with multi-hop collusion queries, a Streamlit dashboard and an offline demo mode.",
+  stack:["Python","LangChain","ArangoDB","Streamlit"],link:"https://github.com/RiddickShailah/LangChain-ArangoDB-GamingGraph-PoC",lt:"View on GitHub"},
+ {t:"GraphRAG Retrieval Lab",kind:"ArangoDB + VectorRAG",term:"Summer 2026",areas:["ai","data"],acc:"#b9a2ff",
+  d:"Compared vector, graph-enhanced and AQL-template retrieval on a 10-question evaluation set, and traced VectorRAG failures to stale auth tokens.",
+  stack:["ArangoDB","AQL","GraphRAG","Kubernetes"]},
+ {t:"Custom Retriever QA",kind:"GenAI service testing",term:"Summer 2026",areas:["ai","data"],acc:"#ffd27a",
+  d:"Automated ingestion of 345 documents (1.74M characters) and ran a 10-scenario QA matrix that ended in an escalation-ready bug report.",
+  stack:["Python","REST APIs","ArangoDB"]},
+ {t:"Helping Hands",kind:"Community donation platform",term:"Spring 2026",areas:["web","sec"],acc:"#ff6fae",img:"assets/helping-hands.jpg",
+  d:"A 14+ endpoint REST API and 6 pages for browsing 8 Atlanta campaigns on a map, with JWT and bcrypt auth and rate limiting for 300+ concurrent users.",
+  stack:["Next.js 14","Express","TypeScript","Prisma"],link:"https://github.com/RiddickShailah/Helping_Hands",lt:"View on GitHub"},
+ {t:"Medicaid Data Platform",kind:"Regulatory analytics dashboard",term:"Spring 2026",areas:["web","data","sec"],acc:"#72e4ff",
+  d:"Dashboard tracking 2.2M+ members with a 5-stage pipeline over 9M+ synthetic records, RBAC across 4 roles and immutable audit logs.",
+  stack:["Next.js 14","TypeScript","Recharts","RBAC"],link:"https://github.com/RiddickShailah/Medicaid_Data_Platform",lt:"View on GitHub"},
+ {t:"Panther Assist",kind:"GSU AI assistant",term:"Spring 2026",areas:["ai","web"],acc:"#b9a2ff",img:"assets/panther-assist.jpg",
+  d:"A Flask API powering an 8-class intent classifier with live confidence scores, plus campus events with RSVP and a Leaflet map.",
+  stack:["Python","Flask","scikit-learn","NLTK"],link:"https://github.com/RiddickShailah/GSU_-AI_Assistant",lt:"View on GitHub"},
+ {t:"ATL Swipe",kind:"Atlanta discovery app",term:"Fall 2025",areas:["web"],acc:"#ffb088",
+  d:"Swipe matching, a photo feed and reviews across 10+ Atlanta venues, with Framer Motion gestures and a map view, deployed on Vercel.",
+  stack:["Next.js 14","Tailwind","Framer Motion"],link:"https://github.com/RiddickShailah/ATL_Swipe",lt:"View on GitHub"}
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let area="all";
+function draw(){
+  document.getElementById("filters").innerHTML=AREAS.map(([id,n])=>`<button class="chip" type="button" data-a="${id}" aria-pressed="${id===area}">${esc(n)}</button>`).join("");
+  const list=PROJECTS.filter(p=>area==="all"||p.areas.includes(area));
+  document.getElementById("grid").innerHTML=list.map(p=>`
+    <div class="bb proj" style="--acc:${p.acc}">
+      <article class="face card" data-tilt>
+        <div class="media pop-sm">${p.img?`<img src="${p.img}" alt="${esc(p.t)} preview" loading="lazy">`:`<div class="ph">${esc(p.t)}</div>`}<span class="t">${esc(p.term)}</span></div>
+        <div class="pbody pop">
+          <span class="kind">${esc(p.kind)}</span>
+          <h3>${esc(p.t)}</h3>
+          <p>${esc(p.d)}</p>
+          <ul class="stack">${p.stack.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
+          ${p.link?`<a class="plink" href="${p.link}" target="_blank" rel="noopener">${esc(p.lt)} →</a>`:""}
+        </div>
+      </article>
+      <div class="legs" aria-hidden="true"><i></i><i></i></div>
+    </div>`).join("");
+  document.getElementById("none").hidden=list.length>0;
+  bindTilt();
+}
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b){area=b.dataset.a;draw();}});
+
+/* ---------- 3D tilt on cards ---------- */
+function bindTilt(){
+  if(still||!fine) return;
+  document.querySelectorAll("[data-tilt]").forEach(el=>{
+    if(el.dataset.tb) return; el.dataset.tb="1";
+    const deep=+(el.dataset.deep||10);
+    el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();
+      const rx=((e.clientY-r.top-r.height/2)/r.height)*-deep, ry=((e.clientX-r.left-r.width/2)/r.width)*(deep+2);
+      el.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px)`;});
+    el.addEventListener("pointerleave",()=>{el.style.transform="";});
+  });
+}
+
+/* ---------- Glitter ---------- */
+(function(){
+  const c=document.getElementById("glitter"),x=c.getContext("2d");let W,H,dpr;
+  const COLS=["#ffd27a","#fff1d6","#ff9fca","#ffffff","#b9a2ff"];
+  function size(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);}
+  size();addEventListener("resize",size);
+  const N=Math.round(Math.min(140,innerWidth/9));
+  const P=Array.from({length:N},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:.6+Math.random()*1.8,ph:Math.random()*6.28,sp:.6+Math.random()*1.6,vy:.05+Math.random()*.2,c:COLS[Math.random()*COLS.length|0]}));
+  const trail=[];
+  if(fine&&!still)addEventListener("pointermove",e=>{if(Math.random()<.5)trail.push({x:e.clientX,y:e.clientY,s:1+Math.random()*2.2,life:1,vx:(Math.random()-.5)*.8,vy:Math.random()*.8,c:COLS[Math.random()*COLS.length|0]});});
+  function star(px,py,r,col,a){x.globalAlpha=a;x.fillStyle=col;x.beginPath();
+    x.moveTo(px,py-r*2.4);x.quadraticCurveTo(px,py,px+r*2.4,py);x.quadraticCurveTo(px,py,px,py+r*2.4);x.quadraticCurveTo(px,py,px-r*2.4,py);x.quadraticCurveTo(px,py,px,py-r*2.4);x.fill();}
+  function frame(t){
+    x.clearRect(0,0,W,H);
+    for(const p of P){const a=Math.max(0,Math.sin(t/1000*p.sp+p.ph));if(a>.05){
+      if(a>.85)star(p.x,p.y,p.s,p.c,a*.9);else{x.globalAlpha=a*.6;x.fillStyle=p.c;x.fillRect(p.x,p.y,p.s,p.s);}}
+      if(!still){p.y+=p.vy;if(p.y>H+5){p.y=-5;p.x=Math.random()*W;}}}
+    for(let i=trail.length-1;i>=0;i--){const q=trail[i];star(q.x,q.y,q.s*q.life,q.c,q.life);q.x+=q.vx;q.y+=q.vy;q.life-=.03;if(q.life<=0)trail.splice(i,1);}
+    x.globalAlpha=1;
+    if(!still)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+document.getElementById("copy").addEventListener("click",()=>{
+  const b=document.getElementById("copy"),m=document.getElementById("mail");
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(m);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Press Ctrl+C";};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m.textContent).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy email",1600);},sel);}else sel();
+});
+draw();
+</script>
 </body>
 </html>

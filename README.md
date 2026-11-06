@@ -1,5 +1,7 @@
 # Shailah Riddick — Portfolio
 
+Tech portfolio themed as a 3D Atlanta skyline at night: neon billboards, glam gold-and-pink type and glitter. Single static page (`index.html` + `assets/`), no build step.
+
 Personal portfolio site showcasing projects from `~/Desktop/Projects`.
 
 ## Run locally
